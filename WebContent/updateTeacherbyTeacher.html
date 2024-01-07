@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/e7c33eb849.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+        .bg {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -111111;
+        }
+        
+        body {
+            font-family: sans-serif;
+            /* font-weight: 700; */
+        }
+        
+        .bg>img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .input:focus {
+            box-shadow: 0px 0px 6px white;
+        }
+        
+        nav {
+            font-family: 'Courgette', cursive;
+        }
+        
+        .font-Courgette {
+            font-family: 'Courgette', cursive;
+        }
+        
+        .font-Lato {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .hiddenScrollBar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .w-fullA {
+            width: 90%;
+        }
+        
+        .disabled-button {
+            opacity: 0.6;
+            /* background-color: red; */
+        }
+    </style>
+</head>
+
+
+<body class="">
+    <input type="hidden" id="uesrnameInp" value="<%= username %>">
+    <div class="bg">
+        <img src="imgs/bg1br15.png" alt="">
+    </div>
+    <nav style=" box-shadow: 0px 0px 6px black;" id="nav" class=" md:bg-white/50 bg-white/90  h-full fixed transition-all duration-200 -left-full md:left-0 top-0  w-full z-50 md:lg:w-1/5">
+        <i class="fas fa-bars  icons_control fixed top-3 right-3  text-2xl md:hidden" id="bars"></i>
+        <i class="fas fa-times icons_control fixed top-3 right-3 text-2xl hidden md:hidden" id="close"></i>
+        <div id="profileImg">
+            <div id="img" class="  pt-10 m-1">
+                <img src="imgs/bg1br15.png" alt="" class=" aspect-square rounded-full w-1/3 md:w-7/12  p-1  m-auto">
+            </div>
+            <div class=" m-0">
+                <p class="text-center text-xl m-0 p-0 leading-none">
+                    <%= name %>
+                </p>
+                <p class="text-center text-md m-1 p-0 leading-none">Examiner</p>
+            </div>
+        </div>
+
+        <ul class="ml-6 my-10 h-1/2 overflow-x-auto overflow-y-auto hiddenScrollBar">
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-home "></i> <a class="hover:pl-1 transition-all hover:font-bold " href="#" onclick="showProfile()"> Profile </a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-user"></i> <a class="hover:pl-1 transition-all hover:font-bold" href="#"> Update</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-file-alt"></i> <a class="hover:pl-1 transition-all hover:font-bold" href=" # ">Add Test</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white fas fa-file "></i> <a class="hover:pl-1 transition-all hover:font-bold" href="#">All Test</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-solid fa-graduation-cap"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # ">Add Student</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-solid fa-school"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # ">All Student</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-solid fa-paste"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # ">Visible Answers</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-key"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # " onclick="changePassword()">Change Password</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white fas fa-sign-out-alt "></i> <a class="hover:pl-1 transition-all hover:font-bold" href="Logout"> Log out</a></li>
+
+        </ul>
+
+        <div class=" text-lg absolute hidden  lg:block w-full bottom-0 ">
+            <p class="text-center"><span class="text-white text-center"> copyright</span> <i class="far fa-copyright"></i>ips academy</p>
+            <p class="text-center">indore</p>
+        </div>
+
+    </nav>
+    <div id="rightBox" class="w-full  md:w-4/5 h-full  fixed top-0 right-0">
+
+        <div style="background-color: rgba(0,0,0,0.5);" class="font-Lato border-black w-fullA md:w-2/5 hiddenScrollBar  overflow-y-auto h-4/5 rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1 class="text-white text-2xl mt-3 text-center">Update Form</h1>
+            <div id="errorbox" class="hidden text-center text-red-700 bg-red-400  border-2 rounded-md border-red-700 w-4/5 m-auto">
+                Username/Password is wrong
+            </div>
+            <div id='successbox' class='hidden text-center text-green-700 bg-green-400  border-2 rounded-md border-green-700 w-4/5 m-auto'>
+                Details Updated successfully
+            </div>
+            <div class="m-7 sm:mx-12">
+                <p class="text-white mb-1 text-xl">Update Name</p>
+                <input type="text" id="UpdateNameInp" name="userName" class="p-3 input field text-black w-full rounded-md focus:border-none focus:box focus:outline-none" placeholder="Enter Username">
+            </div>
+            <div class="m-7 sm:mx-12">
+                <p class="text-white mb-1 text-xl">Update Qualification</p>
+                <input type="text" id="UpdateQualificationInp" name="userName" class="p-3 input field text-black w-full rounded-md focus:border-none focus:box focus:outline-none" placeholder="Enter Username">
+            </div>
+            <div class="m-7 sm:mx-12">
+                <p class="text-white mb-1 text-xl">Update Mobile Number</p>
+                <input type="text" id="UpdateMobileInp" name="userName" class="p-3 input field text-black w-full rounded-md focus:border-none focus:box focus:outline-none" placeholder="Enter Username">
+            </div>
+            <div class="m-7 sm:mx-12">
+                <p class="text-white mb-1 text-xl">Update Email</p>
+                <input type="text" id="UpdateEmailInp" name="userName" class="p-3 input field text-black w-full rounded-md focus:border-none focus:box focus:outline-none" placeholder="Enter Username">
+            </div>
+            <div class="m-7 mx-12">
+                <input type="submit" id="UpdateButton" onclick="updateTeacherDetails()" value="Update" class="bg-blue-600 text-white py-2 text-xl px-4 rounded-md  block w-1/2  m-auto hover:bg-blue-700">
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+<script>
+    let usernameId = document.getElementById('uesrnameInp').value;
+    let bars = document.getElementById('bars');
+    let close = document.getElementById('close');
+    let nav = document.getElementById('nav');
+    bars.addEventListener('click', () => {
+        nav.classList.remove('-left-full');
+        nav.classList.add('left-0');
+        bars.classList.add('hidden');
+        close.classList.remove('hidden');
+
+    });
+
+    close.addEventListener('click', () => {
+        nav.classList.add('-left-full');
+        nav.classList.remove('left-0');
+        bars.classList.remove('hidden');
+        close.classList.add('hidden');
+
+    })
+
+
+
+    // handling hide and show input field 
+    function Eye(ele) {
+        let input = ele.previousElementSibling;
+        let eye_slash = ele.nextElementSibling;
+
+        input.type = "text ";
+        eye_slash.classList.remove('hidden');
+        ele.classList.add('hidden');
+    }
+
+    function EyeSlash(ele) {
+        let input = ele.previousElementSibling.previousElementSibling;
+        let eye = ele.previousElementSibling;
+
+        input.type = 'password';
+        ele.classList.add('hidden');
+        eye.classList.remove('hidden');
+    }
+    // ***********************************************************************
+    // fucntion to update details of teacher 
+    function updateTeacherDetails() {
+        let UpdateNameInp = document.getElementById('UpdateNameInp').value;
+        let UpdateQualificationInp = document.getElementById('UpdateQualificationInp').value;
+        let UpdateMobileInp = document.getElementById('UpdateMobileInp').value;
+        let UpdateEmailInp = document.getElementById('UpdateEmailInp').value;
+
+        if (UpdateEmailInp == '' || UpdateMobileInp == '' || UpdateQualificationInp == '' || UpdateNameInp) {
+            showError("Empty field");
+            // return;
+        }
+
+        let mobPat = /[0-9]{10}/;
+        if (!(mobPat.test(UpdateMobileInp)) && !(UpdateMobileInp.length == 10)) {
+            showError("mobile is not correct");
+            // return;
+        }
+
+        let emailPat = /(\w+)(@gmail.com)/;
+        // console.log(UpdateEmailInp.match(emailPat));
+        console.log(emailPat.test(UpdateEmailInp));
+        if (!emailPat.test(UpdateEmailInp)) {
+            showError("please enter valid gmail");
+            // return 
+        }
+
+
+    }
+    // **********************************************************************
+    function showTeacherUpdateForm() {
+
+        let xml = new XMLHttpRequest();
+        xml.onload = function() {
+            console.log(xml.responseText);
+
+            rightBox.innerHTML = xml.responseText;
+            //closeNav();
+        }
+        console.log(usernameId);
+        xml.open("GET", "ShowTeacherUpdateForm?username=" + usernameId + "&uType=teacher", "yes");
+        xml.send();
+
+
+    }
+    //function to show profile
+    function showProfile() {
+
+        let xml = new XMLHttpRequest();
+        xml.onload = function() {
+            console.log(xml.responseText);
+
+            rightBox.innerHTML = xml.responseText;
+            //closeNav();
+        }
+        console.log(usernameId);
+        xml.open("GET", "ShowProfile?username=" + usernameId + "&uType=teacher", "yes");
+        xml.send();
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //fucntion to replace the content to change the password
+
+    function changePassword() {
+        let xml = new XMLHttpRequest();
+        xml.onload = function() {
+            console.log(xml.responseText);
+            //import { hello }	 from './module.js';
+            rightBox.innerHTML = xml.responseText;
+
+        }
+        xml.open("GET", 'ChangePasswordUI?username=' + usernameId + "&uType=teacher", "yes");
+        xml.send();
+
+    }
+    // **********************************
+
+    function changePasswordButton(ele) {
+        let oldPassword = document.getElementById('oldPassword');
+        let newPassword = document.getElementById('newPassword');
+        let confirmPassword = document.getElementById('confirmPassword');
+        let submit = ele;
+        console.log('submit button');
+        if (oldPassword.value == '' || newPassword.value == '' || confirmPassword.value == '') {
+            showError('empty field');
+            return;
+        }
+        let xml = new XMLHttpRequest();
+
+        xml.onload = function() {
+            let ot = xml.responseText;
+            console.log("response text is :" + ot);
+
+            try {
+                ot = Number(ot);
+
+            } catch (error) {
+                console.log(error);
+                showError('password not changed!');
+                return;
+
+            }
+
+            if (ot == 1) {
+                succesboxmsg("Password changed successfully");
+                oldPassword.value = '';
+                newPassword.value = '';
+                confirmPassword.value = '';
+
+            } else if (ot == 0) {
+                showError("old password is wrong");
+            } else {
+                showError('password not changed');
+            }
+        }
+        xml.open('GET', 'ChangePassword1?utype=student&oldPassword=' + oldPassword.value + '&newPassword=' + newPassword.value, 'yes');
+        xml.send();
+    }
+
+    function passwordConfirmByNewPassword(ele) {
+        let cp = document.getElementById('confirmPassword').value;
+        let np = ele.value;
+        let submit = document.getElementById('passwordChangeSubmit');
+        console.log(np.substr(0, 3));
+        if (cp.length == '')
+            return;
+
+
+        if (cp.substr(0, np.length) != np) {
+            showError('confirom and new password not matches');
+            submit.disabled = true;
+            submit.classList.add('disabled-button');
+        } else {
+            submit.disabled = false;
+            submit.classList.remove('disabled-button');
+        }
+
+    }
+
+    function passwordConfirmByConfirmPassword(ele) {
+        let cp = ele.value;
+        let np = document.getElementById('newPassword').value;
+        let submit = document.getElementById('passwordChangeSubmit');
+        console.log(np.substr(0, 3));
+
+        if (np.substr(0, cp.length) != cp) {
+            showError('confirom and new password not matches');
+            submit.disabled = true;
+            submit.classList.add('disabled-button');
+        } else {
+            submit.disabled = false;
+            submit.classList.remove('disabled-button');
+        }
+
+    }
+
+    function showError(msg) {
+        let errorbox = document.getElementById('errorbox');
+        errorbox.classList.remove('hidden');
+        errorbox.innerText = msg;
+        setTimeout(() => {
+            errorbox.classList.add('hidden');
+        }, 5000);
+
+    }
+    // success msg fucntion 
+    function succesboxmsg(msg) {
+        let succesboxmsg = document.getElementById('successbox');
+        succesboxmsg.classList.remove('hidden');
+        succesboxmsg.innerText = msg;
+        setTimeout(() => {
+            succesboxmsg.classList.add('hidden');
+        }, 5000);
+    }
+</script>
+
+
+</html>

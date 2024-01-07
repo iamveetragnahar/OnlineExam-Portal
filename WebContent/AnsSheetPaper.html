@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/e7c33eb849.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+        .bg {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -111111;
+        }
+        
+        body {
+            font-family: sans-serif;
+            /* font-weight: 700; */
+        }
+        
+        .bg>img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .input:focus {
+            box-shadow: 0px 0px 6px white;
+        }
+        
+        nav {
+            font-family: 'Courgette', cursive;
+        }
+        
+        .font-Courgette {
+            font-family: 'Courgette', cursive;
+        }
+        
+        .font-Lato {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .hiddenScrollBar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .w-fullA {
+            width: 90%;
+        }
+        
+        .disabled-button {
+            opacity: 0.6;
+            /* background-color: red; */
+        }
+        
+        .radio-size {
+            /* -ms-transform: scale(1.5); */
+            /* IE 9 */
+            /* -webkit-transform: scale(1.5); */
+            /* Chrome, Safari, Opera */
+            transform: scale(1.5);
+        }
+        
+        .h-90 {
+            height: 90%;
+        }
+    </style>
+</head>
+
+
+<body class="">
+    <input type="hidden" id="uesrnameInp" value="<%= username %>">
+    <div class="bg">
+        <img src="imgs/bg1br15.png" alt="">
+    </div>
+    <!-- <div id="confrimBox" class="border bg-red-900 h-10 z-50 fixed top-1 w-full">
+
+    </div> -->
+    <nav style=" box-shadow: 0px 0px 6px black;" id="nav" class=" md:bg-white/50 bg-white/90  h-full fixed transition-all duration-200 -left-full md:left-0 top-0  w-full z-40 md:lg:w-1/5">
+        <i class="fas fa-bars  icons_control fixed top-3 right-3  text-2xl md:hidden" id="bars"></i>
+        <i class="fas fa-times icons_control fixed top-3 right-3 text-2xl hidden md:hidden" id="close"></i>
+        <div id="profileImg">
+            <div id="img" class="  pt-10 m-1">
+                <img src="imgs/logo.png" alt="" class="rounded-full aspect-square w-1/3 md:w-7/12  p-1  m-auto">
+            </div>
+            <div class=" m-0">
+                <p class="text-center text-xl m-0 p-0 leading-none">
+                    <%= name %>
+                </p>
+                <p class="text-center text-md m-1 p-0 leading-none">Examiner</p>
+            </div>
+        </div>
+
+        <ul class="ml-6 my-10 h-1/2 overflow-x-auto overflow-y-auto hiddenScrollBar">
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-home "></i> <a class="hover:pl-1 transition-all hover:font-bold " href="#" onclick="showProfile()"> Profile </a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-user"></i> <a class="hover:pl-1 transition-all hover:font-bold" href="#"> Update</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-file-alt"></i> <a class="hover:pl-1 transition-all hover:font-bold" href=" # ">Add Test</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white fas fa-file "></i> <a class="hover:pl-1 transition-all hover:font-bold" href="#">All Test</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-solid fa-graduation-cap"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # ">Add Student</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-solid fa-school"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # ">All Student</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-solid fa-paste"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # ">Visible Answers</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white  fas fa-key"></i> <a class="hover:pl-1 transition-all hover:font-bold " href=" # " onclick="changePassword()">Change Password</a></li>
+            <li class=" mr-5 md:ml-7 text-xl my-5   border-b-2 border-black md:border-none flex justify-center md:block "><i class=" mr-3 text-black text-center md:text-left md:text-white fas fa-sign-out-alt "></i> <a class="hover:pl-1 transition-all hover:font-bold" href="Logout"> Log out</a></li>
+
+        </ul>
+
+        <div class=" text-lg absolute hidden  lg:block w-full bottom-0 ">
+            <p class="text-center"><span class="text-white text-center"> copyright</span> <i class="far fa-copyright"></i>ips academy</p>
+            <p class="text-center">indore</p>
+        </div>
+
+    </nav>
+    <div id="rightBox" class="w-full  md:w-4/5 h-full  fixed top-0 right-0">
+        <div style="background-color: rgba(0,0,0,0.5);" class=" border-black w-fullA md:w-3/5 hiddenScrollBar  overflow-y-auto font-Lato h-90 my-3  rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1 class="text-white text-2xl text-center m-4">Give Test</h1>
+            <div class=" w-fullA  m-auto text-black p-3 text-xl bg-white/50 rounded-md ">
+
+                <div class="m-2 flex">
+                    <span class="p-1">Title:</span>
+                    <span class="p-1">Engineering Graphics</span>
+                </div>
+                <div class="m-2 flex">
+                    <span class="p-1">Course:</span>
+                    <span class="p-1">BioTechnology</span>
+                </div>
+                <div class="m-2 flex">
+                    <span class="p-1">Branch:</span>
+                    <span class="p-1">computer science and Engineering</span>
+                </div>
+
+            </div>
+            <!-- question and optons and and edit box -->
+            <div class=" w-fullA  mx-auto my-3 text-black p-3 text-xl bg-white/50 rounded-md ">
+                <div class=" m-2  flex">
+                    <span class="p-1">Q1:</span>
+                    <span class="p-1">What is Engineering Graphics Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus fugiat commodi earum! Nulla corrupti eos ea sequi aut ex doloribus voluptatibus eveniet, cum dolor quos voluptas ipsum perferendis molestiae dolore accusantium nemo amet! Libero quisquam nostrum natus. Inventore, eaque odit?</span>
+                </div>
+                <div class=" m-2  flex">
+                    <!-- <p class="p-1 ml-3">Option 1</p> -->
+                    <p class="p-1 ml-3 font-semibold  bg-black/50 text-white  rounded-full  px-4 ">Option 1</p>
+                </div>
+                <div class=" m-2  flex">
+                    <p class="p-1 ml-3">Option 1</p>
+                    <!-- <p class="p-1 ml-3  font-bold  bg-green-600  rounded-full  px-4 ">Option 1</p> -->
+                </div>
+                <div class=" m-2  flex">
+                    <p class="p-1 ml-3">Option 1</p>
+                    <!-- <p class="p-1 ml-3 font-bold  bg-green-600  rounded-full  px-4 ">Option 1</p> -->
+                </div>
+                <div class=" m-2  flex">
+                    <p class="p-1 ml-3">Option 1</p>
+                    <!-- <p class="p-1 ml-3 font-bold  bg-green-600  rounded-full  px-4 ">Option 1</p> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+<script>
+    let usernameId = document.getElementById('uesrnameInp').value;
+    let bars = document.getElementById('bars');
+    let close = document.getElementById('close');
+    let nav = document.getElementById('nav');
+    bars.addEventListener('click', () => {
+        nav.classList.remove('-left-full');
+        nav.classList.add('left-0');
+        bars.classList.add('hidden');
+        close.classList.remove('hidden');
+
+    });
+
+    close.addEventListener('click', () => {
+        nav.classList.add('-left-full');
+        nav.classList.remove('left-0');
+        bars.classList.remove('hidden');
+        close.classList.add('hidden');
+
+    })
+
+    function test() {
+        console.log(window.confirm("are y sure"));
+
+    }
+
+
+
+    // handling hide and show input field 
+    function Eye(ele) {
+        let input = ele.previousElementSibling;
+        let eye_slash = ele.nextElementSibling;
+
+        input.type = " text ";
+        eye_slash.classList.remove('hidden');
+        ele.classList.add('hidden');
+    }
+
+    function EyeSlash(ele) {
+        let input = ele.previousElementSibling.previousElementSibling;
+        let eye = ele.previousElementSibling;
+
+        input.type = 'password';
+        ele.classList.add('hidden');
+        eye.classList.remove('hidden');
+    }
+
+
+    function showError(msg) {
+        let errorbox = document.getElementById('errorbox');
+        errorbox.classList.remove('hidden');
+        errorbox.innerText = msg;
+        setTimeout(() => {
+            errorbox.classList.add('hidden');
+        }, 5000);
+
+    }
+    // success msg fucntion 
+    function succesboxmsg(msg) {
+        let succesboxmsg = document.getElementById('successbox');
+        succesboxmsg.classList.remove('hidden');
+        succesboxmsg.innerText = msg;
+        setTimeout(() => {
+            succesboxmsg.classList.add('hidden');
+        }, 5000);
+    }
+</script>
+
+
+</html>
